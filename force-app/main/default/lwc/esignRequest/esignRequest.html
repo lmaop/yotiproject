@@ -1,0 +1,41 @@
+<template>
+    <lightning-card >
+        <div class="slds-scrollable_x">
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Sent to</th>
+                        <th>Signing Status</th>
+                        <th>Sign On</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+
+                <tbody> 
+                    <template for:each={signlist} for:item="sign">
+                        <tr key={sign.Id}>
+                            <td>{sign.Name}</td>
+                            <td>{sign.Sent_to}</td>
+                            <td>
+                                <template if:true={sign.Signing_Status}>
+                                    <span class="slds-badge slds-theme_success">
+                                        ✔ Signed
+                                    </span>
+                                </template>
+
+                                <template if:false={sign.Signing_Status}>
+                                    <span class="slds-badge slds-theme_inverse">
+                                        ● Not signed
+                                    </span>
+                                </template>
+                            </td>
+                            <td>{sign.Signed_on}</td>
+                            <td><a href='https://www.yoti.com'>view details</a></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </lightning-card>
+</template>
